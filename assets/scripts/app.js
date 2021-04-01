@@ -13,6 +13,8 @@ $(() => {
   $('#sign-in').on('submit', authEvents.onSignIn)
   // create change-password event listener that listens for the submit event
   $('#change-password').on('submit', authEvents.onChangePassword)
+  // create sign-out event listener that listens for click event
+  $('#sign-out').on('click', authEvents.onSignOut)
 })
 
 // $(() => {
@@ -28,5 +30,5 @@ $(() => {
 //   // select the button with the id of 'change-password'
 //   // when a 'submit' event occurs, run the 'authEvents.onChangePassword' function
 //   $('#change-password').on('submit', authEvents.onChangePassword)
-//   $('#sign-out').on('click', authEvents.onSignOut)
+
 // })
