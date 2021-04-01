@@ -4,11 +4,12 @@
 // it will update the DOM to change the user interface
 
 const onSignUpSuccess = function () {
-  console.log('Success!')
+  $('#message').text('You succesfully signed up! Sign in to continue.')
+  $('#sign-up').trigger('reset')
 }
 
 const onError = function () {
-  console.log('Error')
+  $('#message').text('Try again!')
 }
 
 // The UI file is in charge of the User Interface
@@ -45,9 +46,7 @@ const onError = function () {
 //   store.user = null
 // }
 //
-// const onError = function () {
-//   $('#message').text('Try again!')
-// }
+
 
 module.exports = {
   onSignUpSuccess,

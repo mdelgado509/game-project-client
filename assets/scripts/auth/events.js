@@ -26,8 +26,8 @@ const onSignUp = function (event) {
   // call function that will send data along with request to create a new user
   api.signUp(formData)
     // import success and failure callback to event handler
-    .then(() => console.log('success'))
-    .catch(() => console.log('error'))
+    .then(ui.onSignUpSuccess)
+    .catch(ui.onError)
 }
 
 // // make an API call

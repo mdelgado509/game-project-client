@@ -9,7 +9,9 @@ const config = require('../config')
 // make an AJAX call request function to create a new user
 
 const signUp = function (formData) {
+  // what is formData?
   console.log(formData)
+
   return $.ajax({
     // set method to create a user
     method: 'POST',
