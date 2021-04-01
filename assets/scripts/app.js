@@ -1,11 +1,28 @@
 'use strict'
 
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
+// this file contains event listeners for authentication
 
-// use require without a reference to ensure a file is bundled
-// require('./example')
+// import event handler callbacks
+
+const authEvents = require('./auth/events')
 
 $(() => {
-  // your JS code goes here
+  // create sign-up event listener that listens for the form submit event
+  $('#sign-up').on('submit', authEvents.onSignUp)
 })
+
+// $(() => {
+//   // hide the elements we don't want to see at first
+//   $('#change-password').hide()
+//   $('#sign-out').hide()
+//   // select the button with the id of 'sign-up'
+//   // when a 'submit' event occurs, run the 'authEvents.onSignUp' function
+//   $('#sign-up').on('submit', authEvents.onSignUp)
+//   // select the button with the id of 'sign-in'
+//   // when a 'submit' event occurs, run the 'authEvents.onSignIn' function
+//   $('#sign-in').on('submit', authEvents.onSignIn)
+//   // select the button with the id of 'change-password'
+//   // when a 'submit' event occurs, run the 'authEvents.onChangePassword' function
+//   $('#change-password').on('submit', authEvents.onChangePassword)
+//   $('#sign-out').on('click', authEvents.onSignOut)
+// })
