@@ -2,9 +2,13 @@
 
 // this file contains event listeners for authentication
 
-// import event handler callbacks
+// import authentication event handler callbacks
 
 const authEvents = require('./auth/events')
+
+// import game event handler callbacks
+
+const gameEvents = require('./game/events')
 
 $(() => {
   // hide the elements we don't want to see at first
@@ -19,20 +23,6 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   // create sign-out event listener that listens for click event
   $('#sign-out').on('click', authEvents.onSignOut)
+  // add event listener for new game button click events
+  $('#new-game').on('click', gameEvents.onNewGame)
 })
-
-// $(() => {
-//   // hide the elements we don't want to see at first
-//   $('#change-password').hide()
-//   $('#sign-out').hide()
-//   // select the button with the id of 'sign-up'
-//   // when a 'submit' event occurs, run the 'authEvents.onSignUp' function
-//   $('#sign-up').on('submit', authEvents.onSignUp)
-//   // select the button with the id of 'sign-in'
-//   // when a 'submit' event occurs, run the 'authEvents.onSignIn' function
-//   $('#sign-in').on('submit', authEvents.onSignIn)
-//   // select the button with the id of 'change-password'
-//   // when a 'submit' event occurs, run the 'authEvents.onChangePassword' function
-//   $('#change-password').on('submit', authEvents.onChangePassword)
-
-// })
