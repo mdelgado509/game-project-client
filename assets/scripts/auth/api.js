@@ -15,8 +15,25 @@ const signUp = function (formData) {
   return $.ajax({
     // set method to create a user
     method: 'POST',
+    // call URL
     url: config.apiUrl + '/sign-up',
-    // send the data along to update our user with
+    // send the data along to create our user
+    data: formData
+  })
+}
+
+// make an AJAX call request function to sign in a registered user
+
+const signIn = function (formData) {
+  // what is formData?
+  console.log(formData)
+
+  return $.ajax({
+    // set method to sign in a registered user
+    method: 'POST',
+    // call URL
+    url: config.apiUrl + '/sign-in',
+    // send the formData along to verify our user
     data: formData
   })
 }
@@ -28,26 +45,9 @@ const signUp = function (formData) {
 // // store our object that stores user info values
 // const store = require('../store')
 //
-// const signUp = function (formData) {
-//   return $.ajax({
-//     // set method to create a user
-//     method: 'POST',
-//     url: config.apiUrl + '/sign-up',
-//     // send the formData along to update our user with
-//     data: formData
-//   })
-// }
-//
+
 // const signIn = function (formData) {
-//   return $.ajax({
-//     // set method to create a user
-//     method: 'POST',
-//     url: config.apiUrl + '/sign-in',
-//     // send the formData along to update our user with
-//     data: formData
-//   })
-// }
-//
+
 // const changePassword = function (formData) {
 //   return $.ajax({
 //     // set method to create a user
@@ -73,5 +73,6 @@ const signUp = function (formData) {
 // }
 
 module.exports = {
-  signUp
+  signUp,
+  signIn
 }

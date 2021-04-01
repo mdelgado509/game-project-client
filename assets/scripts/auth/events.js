@@ -35,19 +35,18 @@ const onSignIn = function (event) {
   event.preventDefault()
   // test event handler callback by logging a message in the console
   console.log('hello')
-  //
-  // // create a variable to store the form
-  // const form = event.target
-  // // extract data from form and store in a variable
-  // const formData = getFormFields(form)
-  // // test data extraction by logging in console
-  // console.log(formData)
-  //
-  // // call function that will send data along with request to create a new user
-  // api.signUp(formData)
-  //   // import success and failure callback to event handler
-  //   .then(ui.onSignUpSuccess)
-  //   .catch(ui.onError)
+
+  // create a variable to store the form
+  const form = event.target
+  // extract data from form and store in a variable
+  const formData = getFormFields(form)
+  // test data extraction by logging in console
+  console.log(formData)
+
+  // call function that will send data along with request to sign in a registered user
+  api.signIn(formData)
+    .then(() => console.log('success'))
+    .catch(() => console.log('fail'))
 }
 
 
