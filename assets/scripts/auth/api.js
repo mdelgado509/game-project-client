@@ -59,19 +59,22 @@ const changePassword = function (formData) {
   })
 }
 
-// const signOut = function () {
-//   return $.ajax({
-//     // set method to create a user
-//     method: 'DELETE',
-//     url: config.apiUrl + '/sign-out',
-//     headers: {
-//       Authorization: 'Bearer ' + store.user.token
-//     }
-//   })
-// }
+const signOut = function () {
+  return $.ajax({
+    // set method to create a user
+    method: 'DELETE',
+    // call URL to change password
+    url: config.apiUrl + '/sign-out',
+    // verify user login with token
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
 
 module.exports = {
   signUp,
   signIn,
-  changePassword
+  changePassword,
+  signOut
 }

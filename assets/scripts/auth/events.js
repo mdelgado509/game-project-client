@@ -69,11 +69,14 @@ const onChangePassword = function (event) {
 const onSignOut = function (event) {
   // prevent the default action of refreshing the page when a form is submitted
   event.preventDefault()
+  // test event handler callback by logging a message in the console
   console.log('sign out works')
-  //
-  // api.signOut()
-  //   .then(ui.onSignOutSuccess)
-  //   .catch(ui.onError)
+
+  api.signOut()
+    .then(() => console.log('success'))
+    .catch(() => console.log('fail'))
+    // .then(ui.onSignOutSuccess)
+    // .catch(ui.onError)
 }
 
 module.exports = {
