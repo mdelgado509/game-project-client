@@ -45,11 +45,9 @@ const onSignIn = function (event) {
 
   // call function that will send data along with request to sign in a registered user
   api.signIn(formData)
-    .then(() => console.log('success'))
-    .catch(() => console.log('fail'))
+    .then(ui.onSignInSuccess)
+    .catch(ui.onError)
 }
-
-
 
 // // make an API call
 // const onSignUp = function (event) {
