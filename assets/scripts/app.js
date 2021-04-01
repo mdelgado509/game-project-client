@@ -11,6 +11,8 @@ $(() => {
   $('#sign-up').on('submit', authEvents.onSignUp)
   // create sign-in event listener that listens for the form submit event
   $('#sign-in').on('submit', authEvents.onSignIn)
+  // create change-password event listener that listens for the submit event
+  $('#change-password').on('submit', authEvents.onChangePassword)
 })
 
 // $(() => {

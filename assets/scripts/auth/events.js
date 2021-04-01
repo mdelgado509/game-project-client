@@ -49,38 +49,12 @@ const onSignIn = function (event) {
     .catch(ui.onError)
 }
 
-// // make an API call
-// const onSignUp = function (event) {
-//   // prevent the default action of refreshing the page when a form is submitted
-//   event.preventDefault()
-//
-//   // event.target is our form, store it in a better named variable
-//   const form = event.target
-//   // get the data from our form
-//   const formData = getFormFields(form)
-//
-//   api.signUp(formData)
-//     .then(ui.onSignUpSuccess)
-//     .catch(ui.onError)
-// }
-
-// const onSignIn = function (event) {
-//   // prevent the default action of refreshing the page when a form is submitted
-//   event.preventDefault()
-//
-//   // event.target is our form, store it in a better named variable
-//   const form = event.target
-//   // get the data from our form
-//   const formData = getFormFields(form)
-//
-//   api.signIn(formData)
-//     .then(ui.onSignInSuccess)
-//     .catch(ui.onError)
-// }
-//
-// const onChangePassword = function (event) {
-//   // prevent the default action of refreshing the page when a form is submitted
-//   event.preventDefault()
+const onChangePassword = function (event) {
+  // prevent default refresh page
+  event.preventDefault()
+  // test event handler callback by logging a message in the console
+  console.log('hello')
+}
 //
 //   // event.target is our form, store it in a better named variable
 //   const form = event.target
@@ -103,5 +77,6 @@ const onSignIn = function (event) {
 
 module.exports = {
   onSignUp,
-  onSignIn
+  onSignIn,
+  onChangePassword
 }
