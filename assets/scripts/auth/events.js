@@ -30,6 +30,28 @@ const onSignUp = function (event) {
     .catch(ui.onError)
 }
 
+const onSignIn = function (event) {
+  // prevent default refresh page
+  event.preventDefault()
+  // test event handler callback by logging a message in the console
+  console.log('hello')
+  //
+  // // create a variable to store the form
+  // const form = event.target
+  // // extract data from form and store in a variable
+  // const formData = getFormFields(form)
+  // // test data extraction by logging in console
+  // console.log(formData)
+  //
+  // // call function that will send data along with request to create a new user
+  // api.signUp(formData)
+  //   // import success and failure callback to event handler
+  //   .then(ui.onSignUpSuccess)
+  //   .catch(ui.onError)
+}
+
+
+
 // // make an API call
 // const onSignUp = function (event) {
 //   // prevent the default action of refreshing the page when a form is submitted
@@ -83,5 +105,6 @@ const onSignUp = function (event) {
 // }
 
 module.exports = {
-  onSignUp
+  onSignUp,
+  onSignIn
 }
