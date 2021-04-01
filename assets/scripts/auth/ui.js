@@ -18,32 +18,45 @@ const onSignInSuccess = function (response) {
   // extract user information from API response data
   store.user = response.user
   $('#message').text('You succesfully signed in ' + store.user.email)
+  // reset field
   $('#sign-in').trigger('reset')
+  // show fields change password and sign out
+  $('#change-password').show()
+  $('#sign-out').show()
+  // hide sign up and sign in fields
+  $('#sign-up').hide()
+  $('#sign-in').hide()
 }
 
 const onChangePasswordSuccess = function () {
+  // notify user of succesful password change
   $('#message').text('You succesfully changed your password ' + store.user.email)
+  // reset field
   $('#change-password').trigger('reset')
 }
 
-const onError = function () {
-  $('#message').text('Try again!')
+const onSignOutSuccess = function () {
+  // message user of sign out success
+  $('#message').text('You succesfully logged out ' + store.user.email)
+  // erase user info
+  store.user = null
+  // show sign up and sign in
+  $('#sign-up').show()
+  $('#sign-in').show()
+  // high sign out and change password fields
+  $('#change-password').hide()
+  $('#sign-out').hide()
 }
 
-//
-// const onSignOutSuccess = function () {
-//   $('#message').text('You succesfully logged out of ' + store.user.email)
-//   $('#sign-up').show()
-//   $('#sign-in').show()
-//   $('#change-password').hide()
-//   $('#sign-out').hide()
-//   store.user = null
-// }
-//
+const onError = function () {
+  // messahe user of error
+  $('#message').text('Try again!')
+}
 
 module.exports = {
   onSignUpSuccess,
   onSignInSuccess,
   onChangePasswordSuccess,
+  onSignOutSuccess,
   onError
 }

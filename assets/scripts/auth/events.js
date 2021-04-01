@@ -73,10 +73,8 @@ const onSignOut = function (event) {
   console.log('sign out works')
 
   api.signOut()
-    .then(() => console.log('success'))
-    .catch(() => console.log('fail'))
-    // .then(ui.onSignOutSuccess)
-    // .catch(ui.onError)
+    .then(ui.onSignOutSuccess)
+    .catch(ui.onError)
 }
 
 module.exports = {
