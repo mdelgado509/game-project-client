@@ -54,16 +54,21 @@ const onChangePassword = function (event) {
   event.preventDefault()
   // test event handler callback by logging a message in the console
   console.log('hello')
+  // event.target is our form, store it in a better named variable
+  const form = event.target
+  // get the data from our form
+  const formData = getFormFields(form)
+  // log formData
+  console.log(formData)
+  // api call that will send data to update user info
+  api.changePassword(formData)
+    .then(() => console.log('Success'))
+    .catch(() => console.log('Fail'))
 }
 //
-//   // event.target is our form, store it in a better named variable
-//   const form = event.target
-//   // get the data from our form
-//   const formData = getFormFields(form)
+
 //
-//   api.changePassword(formData)
-//     .then(ui.onChangePasswordSuccess)
-//     .catch(ui.onError)
+
 // }
 //
 // const onSignOut = function (event) {

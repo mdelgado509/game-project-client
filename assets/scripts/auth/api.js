@@ -6,6 +6,9 @@
 
 const config = require('../config')
 
+// import object to extract API sign in response data (token)
+const store = require('../store')
+
 // make an AJAX call request function to create a new user
 
 const signUp = function (formData) {
@@ -38,29 +41,24 @@ const signIn = function (formData) {
   })
 }
 
-// // this file contains the functions that make requests to the API
-// // import our apiUrl from the config file
-// const config = require('../config')
-//
-// // store our object that stores user info values
-// const store = require('../store')
-//
+const changePassword = function (formData) {
+  // what is formData?
+  console.log(formData)
 
-// const signIn = function (formData) {
+  return $.ajax({
+    // set method to change password
+    method: 'PATCH',
+    // Call URL to change password
+    url: config.apiUrl + '/change-password',
+    // send the formData along to update user password
+    data: formData,
+    // verify user login with token
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
 
-// const changePassword = function (formData) {
-//   return $.ajax({
-//     // set method to create a user
-//     method: 'PATCH',
-//     url: config.apiUrl + '/change-password',
-//     // send the formData along to update our user with
-//     data: formData,
-//     headers: {
-//       Authorization: 'Bearer ' + store.user.token
-//     }
-//   })
-// }
-//
 // const signOut = function () {
 //   return $.ajax({
 //     // set method to create a user
@@ -74,5 +72,6 @@ const signIn = function (formData) {
 
 module.exports = {
   signUp,
-  signIn
+  signIn,
+  changePassword
 }

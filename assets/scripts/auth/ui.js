@@ -3,13 +3,21 @@
 // this file contains API response handler functions
 // it will update the DOM to change the user interface
 
+// import object to store API sign in response data (token)
+
+const store = require('../store')
+
 const onSignUpSuccess = function () {
   $('#message').text('You succesfully signed up! Sign in to continue.')
   $('#sign-up').trigger('reset')
 }
 
-const onSignInSuccess = function () {
-  $('#message').text('You succesfully signed in')
+const onSignInSuccess = function (response) {
+  // check for API response data
+  console.log(response)
+  // extract user information from API response data
+  store.user = response.user
+  $('#message').text('You succesfully signed in ' + store.user.email)
   $('#sign-up').trigger('reset')
 }
 
