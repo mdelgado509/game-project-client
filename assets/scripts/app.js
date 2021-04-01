@@ -10,6 +10,7 @@ $(() => {
   // hide the elements we don't want to see at first
   $('#change-password').hide()
   $('#sign-out').hide()
+  $('#new-game').hide()
   // create sign-up event listener that listens for the form submit event
   $('#sign-up').on('submit', authEvents.onSignUp)
   // create sign-in event listener that listens for the form submit event

@@ -20,9 +20,10 @@ const onSignInSuccess = function (response) {
   $('#message').text('You succesfully signed in ' + store.user.email)
   // reset field
   $('#sign-in').trigger('reset')
-  // show fields change password and sign out
+  // show fields change password sign out and new game
   $('#change-password').show()
   $('#sign-out').show()
+  $('#new-game').show()
   // hide sign up and sign in fields
   $('#sign-up').hide()
   $('#sign-in').hide()
@@ -46,6 +47,7 @@ const onSignOutSuccess = function () {
   // high sign out and change password fields
   $('#change-password').hide()
   $('#sign-out').hide()
+  $('#new-game').hide()
 }
 
 const onError = function () {
