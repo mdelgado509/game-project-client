@@ -35,6 +35,7 @@ const onBoardClick = function (event) {
     console.log('space is empty')
     ui.addToken(spaceID)
   } else {
+    console.log('space is taken')
     ui.onError()
   }
 }

@@ -6,39 +6,88 @@
 const store = require('../store')
 
 const onNewGameSuccess = function (response) {
-  // create player object in store
-  store.player = {}
-  // assign player token
-  store.player.token = store.user.token
-  // assign player X
-  store.player.isTeamX = true
-  // log player
-  console.log(store.player)
-
-  // log API response
-  console.log(response)
-  // store api response data
+  // store game information (game cells)
   store.game = response.game
+
+  // assign team X
+  store.isTeamX = true
 
   // display game board
   $('.game-board').show()
   // notify user of a new game
-  $('#message').text('New game was created you start as X')
+  $('#message').text('New game was created. You begin the game as team X')
   // hide change password and new game fields/button
   $('#change-password').hide()
   $('#new-game').hide()
 }
 
 const addToken = function (spaceID) {
-  if (store.player.isTeamX) {
-    // add player token and team to the game cell array
-    store.game.cells[spaceID] = store.player
+  if (store.isTeamX) {
+    // store player info in game cell array
+    store.game.cells[spaceID] = {
+      token: store.user.token,
+      isTeamX: true
+    }
     // log array information
     console.log(store.game.cells)
     // add X to the board
     document.getElementById(spaceID).innerHTML = 'X'
+    // check for winner
+    checkWinner(store.game.cells)
+    // rotate player from X to O
+    store.isTeamX = false
+    // notify user of turn change
+    $('#message').text("It's now team O's turn")
   } else {
-    // add O to the board
+    // store player info in game cell array
+    store.game.cells[spaceID] = {
+      token: store.user.token,
+      isTeamX: false
+    }
+    // log array information
+    console.log(store.game.cells)
+    // add 0 to the board
+    document.getElementById(spaceID).innerHTML = 'O'
+    // check for winner
+    checkWinner(store.game.cells)
+    // rotate player from X to O
+    store.isTeamX = true
+    // notify user of turn change
+    $('#message').text("It's now team X's turn")
+  }
+}
+
+const checkWinner = function (arr) {
+  // create array to represent empty spaces
+  const winnerArray = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  // create array to represent filled in spaces
+  const teamArray = arr.map(element => element.isTeamX)
+  // modify array to include boolean values of filled spaces
+  // skip over undefined spaces
+  for (let i = 0; i < arr.length; i++) {
+    if (teamArray[i] !== undefined) {
+      winnerArray[i] = teamArray[i]
+    }
+  }
+  // create a conditional test if winning spaces have been filled
+  if (winnerArray[0] === winnerArray[1] && winnerArray[1] === winnerArray[2]) {
+    console.log('game over')
+  } else if (winnerArray[0] === winnerArray[3] && winnerArray[3] === winnerArray[6]) {
+    console.log('game over')
+  } else if (winnerArray[0] === winnerArray[4] && winnerArray[4] === winnerArray[8]) {
+    console.log('game over')
+  } else if (winnerArray[2] === winnerArray[4] && winnerArray[4] === winnerArray[6]) {
+    console.log('game over')
+  } else if (winnerArray[1] === winnerArray[4] && winnerArray[4] === winnerArray[7]) {
+    console.log('game over')
+  } else if (winnerArray[2] === winnerArray[5] && winnerArray[5] === winnerArray[8]) {
+    console.log('game over')
+  } else if (winnerArray[3] === winnerArray[4] && winnerArray[4] === winnerArray[5]) {
+    console.log('game over')
+  } else if (winnerArray[6] === winnerArray[7] && winnerArray[7] === winnerArray[8]) {
+    console.log('game over')
+  } else {
+    console.log('game on')
   }
 }
 
@@ -50,5 +99,6 @@ const onError = function () {
 module.exports = {
   onNewGameSuccess,
   addToken,
+  checkWinner,
   onError
 }
