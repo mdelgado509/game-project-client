@@ -6,10 +6,20 @@
 const store = require('../store')
 
 const onNewGameSuccess = function (response) {
+  // create player object in store
+  store.player = {}
+  // assign player token
+  store.player.token = store.user.token
+  // assign player X
+  store.player.isTeamX = true
+  // log player
+  console.log(store.player)
+
   // log API response
   console.log(response)
   // store api response data
   store.game = response.game
+
   // display game board
   $('.game-board').show()
   // notify user of a new game
