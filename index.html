@@ -12,33 +12,45 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-    <main>
-      <form id="sign-up">
-        <input name="credentials[email]" type="email" placeholder="email" required>
-        <input name="credentials[password]" type="password" placeholder="password" required>
-        <input name="credentials[password_confirmation]" type="password" placeholder="password confirmation" required>
-        <button>Sign Up</button>
-      </form>
-      <form id="sign-in">
-        <input name="credentials[email]" type="email" placeholder="email" required>
-        <input name="credentials[password]" type="password" placeholder="password" required>
-        <button>Sign In</button>
-      </form>
-      <form id="change-password">
-        <input name="passwords[old]" type="password" placeholder="old password" required>
-        <input name="passwords[new]" type="password" placeholder="new password" required>
-        <button>Change Password</button>
-      </form>
-      <form id="sign-out">
-        <button>Sign Out</button>
-      </form>
-      <form>
-        <button id="new-game">New Game</button>
-      </form>
-      <p id="message"></p>
-      <div id="game-board">
-        <h1>"GAME BOARD"</h1>
-      </div>
-    </main>
+      <main>
+        <section class="auth">
+          <form id="sign-up">
+            <input name="credentials[email]" type="email" placeholder="email" required>
+            <input name="credentials[password]" type="password" placeholder="password" required>
+            <input name="credentials[password_confirmation]" type="password" placeholder="password confirmation" required>
+            <button>Sign Up</button>
+          </form>
+          <form id="sign-in">
+            <input name="credentials[email]" type="email" placeholder="email" required>
+            <input name="credentials[password]" type="password" placeholder="password" required>
+            <button>Sign In</button>
+          </form>
+          <form id="change-password">
+            <input name="passwords[old]" type="password" placeholder="old password" required>
+            <input name="passwords[new]" type="password" placeholder="new password" required>
+            <button>Change Password</button>
+          </form>
+          <form id="sign-out">
+            <button>Sign Out</button>
+          </form>
+          <form>
+            <button id="new-game">New Game</button>
+          </form>
+          <p id="message"></p>
+        </section>
+        <section class="game">
+          <div class="game-board">
+            <div id="0" class="box"></div>
+            <div id="1" class="box"></div>
+            <div id="2" class="box"></div>
+            <div id="3" class="box"></div>
+            <div id="4" class="box"></div>
+            <div id="5" class="box"></div>
+            <div id="6" class="box"></div>
+            <div id="7" class="box"></div>
+            <div id="8" class="box"></div>
+          </div>
+        </section>
+      </main>
     </body>
 </html>

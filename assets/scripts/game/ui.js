@@ -11,7 +11,7 @@ const onNewGameSuccess = function (response) {
   // store api response data
   store.game = response.game
   // display game board
-  $('#game-board').show()
+  $('.game-board').show()
   // notify user of a new game
   $('#message').text('New game was created you start as X')
   // hide change password and new game fields/button
