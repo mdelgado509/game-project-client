@@ -16,14 +16,16 @@ $(() => {
   $('#sign-out').hide()
   $('#new-game').hide()
   $('.game-board').hide()
-  // create sign-up event listener that listens for the form submit event
+
+  // create event listener for submit events (sign-up, sign-in, change-pw)
   $('#sign-up').on('submit', authEvents.onSignUp)
-  // create sign-in event listener that listens for the form submit event
   $('#sign-in').on('submit', authEvents.onSignIn)
-  // create change-password event listener that listens for the submit event
   $('#change-password').on('submit', authEvents.onChangePassword)
-  // create sign-out event listener that listens for click event
+
+  // create event listener for click events (sign-out, new-game)
   $('#sign-out').on('click', authEvents.onSignOut)
-  // add event listener for new game button click events
   $('#new-game').on('click', gameEvents.onNewGame)
+
+  // create event listener for game click events
+  $('.game-board').on('click', gameEvents.onBoardClick)
 })

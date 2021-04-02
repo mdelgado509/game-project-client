@@ -19,6 +19,11 @@ const onNewGame = function (event) {
     .catch(ui.onError)
 }
 
+const onBoardClick = function (event) {
+  console.log('the game board was clicked')
+}
+
 module.exports = {
-  onNewGame
+  onNewGame,
+  onBoardClick
 }
