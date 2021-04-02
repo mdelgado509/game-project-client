@@ -6,19 +6,11 @@
 const store = require('../store')
 
 const onNewGameSuccess = function (response) {
-  // create player object in store
-  store.player = {}
-  // assign player token
-  store.player.token = store.user.token
-  // assign player X
-  store.player.isTeamX = true
-  // log player
-  console.log(store.player)
-
-  // log API response
-  console.log(response)
-  // store api response data
+  // store game information (game cells)
   store.game = response.game
+
+  // assign team X
+  store.isTeamX = true
 
   // display game board
   $('.game-board').show()
@@ -30,15 +22,30 @@ const onNewGameSuccess = function (response) {
 }
 
 const addToken = function (spaceID) {
-  if (store.player.isTeamX) {
-    // add player token and team to the game cell array
-    store.game.cells[spaceID] = store.player
+  if (store.isTeamX) {
+    // store player info in game cell array
+    store.game.cells[spaceID] = {
+      token: store.user.token,
+      isTeamX: true
+    }
     // log array information
     console.log(store.game.cells)
     // add X to the board
     document.getElementById(spaceID).innerHTML = 'X'
+    // rotate player from X to O
+    store.isTeamX = false
   } else {
-    // add O to the board
+    // store player info in game cell array
+    store.game.cells[spaceID] = {
+      token: store.user.token,
+      isTeamX: false
+    }
+    // log array information
+    console.log(store.game.cells)
+    // add 0 to the board
+    document.getElementById(spaceID).innerHTML = 'O'
+    // rotate player from X to O
+    store.isTeamX = true
   }
 }
 
