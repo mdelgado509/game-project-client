@@ -15,6 +15,7 @@ $(() => {
   $('#change-password').hide()
   $('#sign-out').hide()
   $('#new-game').hide()
+  $('#game-board').hide()
   // create sign-up event listener that listens for the form submit event
   $('#sign-up').on('submit', authEvents.onSignUp)
   // create sign-in event listener that listens for the form submit event

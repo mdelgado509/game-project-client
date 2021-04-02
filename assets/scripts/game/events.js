@@ -4,8 +4,8 @@
 
 // import api request functions
 const api = require('./api')
-// // import functions that update user interface on client request
-// const ui = require('./ui')
+// import functions that update user interface on client request
+const ui = require('./ui')
 
 const onNewGame = function (event) {
   // prevent default refresh page
@@ -15,8 +15,8 @@ const onNewGame = function (event) {
 
   // import api call to create a new game
   api.newGame()
-    .then(() => console.log('newGame created'))
-    .catch(() => console.log('newGame not created'))
+    .then(ui.onNewGameSuccess)
+    .catch(ui.onError)
 }
 
 module.exports = {

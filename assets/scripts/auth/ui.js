@@ -8,7 +8,9 @@
 const store = require('../store')
 
 const onSignUpSuccess = function () {
+  // log success message for sign up
   $('#message').text('You succesfully signed up! Sign in to continue.')
+  // clear fields
   $('#sign-up').trigger('reset')
 }
 
@@ -20,7 +22,7 @@ const onSignInSuccess = function (response) {
   $('#message').text('You succesfully signed in ' + store.user.email)
   // reset field
   $('#sign-in').trigger('reset')
-  // show fields change password sign out and new game
+  // show fields change password and sign out
   $('#change-password').show()
   $('#sign-out').show()
   $('#new-game').show()
