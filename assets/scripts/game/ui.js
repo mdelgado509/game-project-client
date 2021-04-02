@@ -58,34 +58,34 @@ const addToken = function (spaceID) {
 }
 
 const checkWinner = function (arr) {
-  // create array to represent filled in spaces x = true
+  // create array to represent empty spaces
+  const winnerArray = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  // create array to represent filled in spaces
   const teamArray = arr.map(element => element.isTeamX)
-  console.log(teamArray)
-  // create a conditional test to check for winning 012 X's
-  if ((teamArray[0] && teamArray[1] && teamArray[2])) {
+  // modify array to include boolean values of filled spaces
+  // skip over undefined spaces
+  for (let i = 0; i < arr.length; i++) {
+    if (teamArray[i] !== undefined) {
+      winnerArray[i] = teamArray[i]
+    }
+  }
+  // create a conditional test if winning spaces have been filled
+  if (winnerArray[0] === winnerArray[1] && winnerArray[1] === winnerArray[2]) {
     console.log('game over')
-  // create a conditional test to check for winning 036 X's
-  } else if (teamArray[0] && teamArray[3] && teamArray[6]) {
+  } else if (winnerArray[0] === winnerArray[3] && winnerArray[3] === winnerArray[6]) {
     console.log('game over')
-  // create a conditional test to check for winning 048 X's
-  } else if (teamArray[0] && teamArray[4] && teamArray[8]) {
+  } else if (winnerArray[0] === winnerArray[4] && winnerArray[4] === winnerArray[8]) {
     console.log('game over')
-  // create a conditional test to check for winning 147 X's
-  } else if (teamArray[0] && teamArray[4] && teamArray[8]) {
+  } else if (winnerArray[2] === winnerArray[4] && winnerArray[4] === winnerArray[6]) {
     console.log('game over')
-  // create a conditional test to check for winning 246 X's
-  } else if (teamArray[2] && teamArray[4] && teamArray[6]) {
+  } else if (winnerArray[1] === winnerArray[4] && winnerArray[4] === winnerArray[7]) {
     console.log('game over')
-  // create a conditional test to check for winning 258 X's
-  } else if (teamArray[2] && teamArray[5] && teamArray[8]) {
+  } else if (winnerArray[2] === winnerArray[5] && winnerArray[5] === winnerArray[8]) {
     console.log('game over')
-  // create a conditional test to check for winning 258 X's
-  } else if (teamArray[3] && teamArray[4] && teamArray[5]) {
+  } else if (winnerArray[3] === winnerArray[4] && winnerArray[4] === winnerArray[5]) {
     console.log('game over')
-  // create a conditional test to check for winning 345 X's
-  } else if (teamArray[6] && teamArray[7] && teamArray[8]) {
+  } else if (winnerArray[6] === winnerArray[7] && winnerArray[7] === winnerArray[8]) {
     console.log('game over')
-  // create a conditional test to check for winning 678 X's
   } else {
     console.log('game on')
   }
