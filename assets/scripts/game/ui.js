@@ -15,7 +15,7 @@ const onNewGameSuccess = function (response) {
   // display game board
   $('.game-board').show()
   // notify user of a new game
-  $('#message').text('New game was created you start as X')
+  $('#message').text('New game was created. You begin the game as team X')
   // hide change password and new game fields/button
   $('#change-password').hide()
   $('#new-game').hide()
@@ -34,6 +34,8 @@ const addToken = function (spaceID) {
     document.getElementById(spaceID).innerHTML = 'X'
     // rotate player from X to O
     store.isTeamX = false
+    // notify user of turn change
+    $('#message').text("It's now team O's turn")
   } else {
     // store player info in game cell array
     store.game.cells[spaceID] = {
@@ -46,6 +48,8 @@ const addToken = function (spaceID) {
     document.getElementById(spaceID).innerHTML = 'O'
     // rotate player from X to O
     store.isTeamX = true
+    // notify user of turn change
+    $('#message').text("It's now team X's turn")
   }
 }
 
