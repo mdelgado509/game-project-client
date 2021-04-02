@@ -1,1 +1,26 @@
 @import '~bootstrap/scss/bootstrap';
+
+.auth {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-board {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-board {
+  display: grid;
+  grid-template-rows: 150px 150px 150px;
+  grid-template-columns: 150px 150px 150px;
+  justify-content: center;
+}
+
+.box {
+  background-color: orange;
+  border: 1px solid black;
+
+}
