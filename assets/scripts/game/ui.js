@@ -29,6 +29,19 @@ const onNewGameSuccess = function (response) {
   $('#new-game').hide()
 }
 
+const addToken = function (spaceID) {
+  if (store.player.isTeamX) {
+    // add player token and team to the game cell array
+    store.game.cells[spaceID] = store.player
+    // log array information
+    console.log(store.game.cells)
+    // add X to the board
+    document.getElementById(spaceID).innerHTML = 'X'
+  } else {
+    // add O to the board
+  }
+}
+
 const onError = function () {
   // display error
   $('#message').text('Try again!')
@@ -36,5 +49,6 @@ const onError = function () {
 
 module.exports = {
   onNewGameSuccess,
+  addToken,
   onError
 }

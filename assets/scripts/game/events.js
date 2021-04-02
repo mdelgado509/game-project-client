@@ -4,8 +4,12 @@
 
 // import api request functions
 const api = require('./api')
+
 // import functions that update user interface on client request
 const ui = require('./ui')
+
+// import object to extract API sign in response data (token)
+const store = require('../store')
 
 const onNewGame = function (event) {
   // prevent default refresh page
@@ -23,14 +27,15 @@ const onBoardClick = function (event) {
   // check click handler functionality
   console.log('the game board was clicked')
 
-  // store innerHTML in a named varaible
-  const innerHTML = event.target.innerHTML
+  // store space ID in variable
+  const spaceID = event.target.id
 
   // create conditional to check if space contains HTML text or not
-  if (innerHTML === '') {
+  if (event.target.innerHTML === '') {
     console.log('space is empty')
+    ui.addToken(spaceID)
   } else {
-    console.log('space is taken')
+    ui.onError()
   }
 }
 
