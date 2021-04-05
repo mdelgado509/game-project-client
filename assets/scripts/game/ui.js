@@ -6,6 +6,9 @@
 const store = require('../store')
 
 const onNewGameSuccess = function (response) {
+  // clear game board
+  $('.box').text('')
+
   // store game information (game cells)
   store.game = response.game
 
@@ -30,6 +33,7 @@ const onUpdateSuccess = function (response) {
   // store winner data
   console.log(store.winner)
   if (store.game.over) {
+    $('#new-game').show()
     if (store.winner) {
       // add winner message
       $('#message').text('Game over! Team ' + store.winner + ' won.')
