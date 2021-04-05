@@ -25,6 +25,23 @@ const newGame = function () {
   })
 }
 
+// make ajax call to view game data
+
+const viewGames = function () {
+  return $.ajax({
+    // define GET method
+    method: 'GET',
+    // call url
+    url: config.apiUrl + '/games',
+    // verify user with token
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
+// make AJAX call to update game data
+
 const updateGame = function (player, index, over) {
   // check data API is receiving
   console.log(`
@@ -56,5 +73,6 @@ const updateGame = function (player, index, over) {
 
 module.exports = {
   newGame,
+  viewGames,
   updateGame
 }

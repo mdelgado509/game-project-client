@@ -15,6 +15,7 @@ $(() => {
   $('#change-password').hide()
   $('#sign-out').hide()
   $('#new-game').hide()
+  $('#view-games').hide()
   $('.game-board').hide()
 
   // create event listener for submit events (sign-up, sign-in, change-pw)
@@ -22,9 +23,10 @@ $(() => {
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#change-password').on('submit', authEvents.onChangePassword)
 
-  // create event listener for click events (sign-out, new-game)
+  // create event listener for click events (sign-out, new-game, view-games)
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#new-game').on('click', gameEvents.onNewGame)
+  $('#view-games').on('click', gameEvents.onViewGames)
 
   // create event listener for game click events
   $('.game-board').on('click', gameEvents.onBoardClick)

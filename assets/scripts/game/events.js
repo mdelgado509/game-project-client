@@ -23,6 +23,17 @@ const onNewGame = function (event) {
     .catch(ui.onError)
 }
 
+const onViewGames = function (event) {
+  // prevent defaul refresh page
+  event.preventDefault()
+  // console log to make sure button click listener / handler work
+  console.log('view game button works')
+  //
+  api.viewGames()
+    .then(ui.onViewGamesSuccess)
+    .catch(ui.onError)
+}
+
 const onBoardClick = function (event) {
   // if game is over message the user and stop function call
   if (store.game.over) {
@@ -64,5 +75,6 @@ const onBoardClick = function (event) {
 
 module.exports = {
   onNewGame,
-  onBoardClick
+  onBoardClick,
+  onViewGames
 }
