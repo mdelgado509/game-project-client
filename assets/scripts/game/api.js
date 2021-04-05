@@ -43,13 +43,6 @@ const viewGames = function () {
 // make AJAX call to update game data
 
 const updateGame = function (player, index, over) {
-  // check data API is receiving
-  console.log(`
-    This is the API data:
-      id: ${player},
-      index: ${index},
-      over: ${over}`)
-  console.log()
   return $.ajax({
     // define PATCH method
     method: 'PATCH',

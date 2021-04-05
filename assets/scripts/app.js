@@ -29,5 +29,8 @@ $(() => {
   $('#view-games').on('click', gameEvents.onViewGames)
 
   // create event listener for game click events
-  $('.game-board').on('click', gameEvents.onBoardClick)
+  $('.box').on('click', gameEvents.onBoardClick)
+  // changed to box class so user only reads error when clicking in the
+  // game-board field
+  // $('.game-board').on('click', gameEvents.onBoardClick)
 })

@@ -15,8 +15,6 @@ const onSignUpSuccess = function () {
 }
 
 const onSignInSuccess = function (response) {
-  // check for API response data
-  console.log(response)
   // extract user information from API response data
   store.user = response.user
   $('#message').text('You succesfully signed in ' + store.user.email)
@@ -56,7 +54,7 @@ const onSignOutSuccess = function () {
 }
 
 const onError = function () {
-  // messahe user of error
+  // message user of error
   $('#message').text('Try again!')
 }
 

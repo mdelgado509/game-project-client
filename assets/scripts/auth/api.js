@@ -12,9 +12,6 @@ const store = require('../store')
 // make an AJAX call request function to create a new user
 
 const signUp = function (formData) {
-  // what is formData?
-  console.log(formData)
-
   return $.ajax({
     // set method to create a user
     method: 'POST',
@@ -28,9 +25,6 @@ const signUp = function (formData) {
 // make an AJAX call request function to sign in a registered user
 
 const signIn = function (formData) {
-  // what is formData?
-  console.log(formData)
-
   return $.ajax({
     // set method to sign in a registered user
     method: 'POST',
@@ -42,9 +36,6 @@ const signIn = function (formData) {
 }
 
 const changePassword = function (formData) {
-  // what is formData?
-  console.log(formData)
-
   return $.ajax({
     // set method to change password
     method: 'PATCH',
