@@ -11,9 +11,6 @@ const ui = require('./ui')
 // import object to extract API sign in response data (token)
 const store = require('../store')
 
-// import getFormFields function for sending JSON data to API
-const getFormFields = require('../../../lib/get-form-fields')
-
 const onNewGame = function (event) {
   // prevent default refresh page
   event.preventDefault()
@@ -30,13 +27,9 @@ const onBoardClick = function (event) {
   // check click handler functionality
   console.log('the game board was clicked')
 
-  // store space ID in variable
-  const index = event.target.id
-
-  // store game ID in a variable
-  const id = store.game._id
-
-  console.log(id)
+  // store cell index information
+  const index = $(event.target).data('cell-index')
+  console.log(index)
 
   // create conditional to check if space contains HTML text or not
   if (event.target.innerHTML === '') {
@@ -45,18 +38,19 @@ const onBoardClick = function (event) {
     // add token to the board
     ui.addToken(index)
 
-    // what is this?
-    const cell = $(event.target)
-    console.log(cell)
-    // what is this?
-    const cellData = $(event.target).data('cell-index')
-    console.log(cellData)
-    // what is this?
-    const player = cell.text()
+    // get player value
+    const player = $(event.target).text()
     console.log(player)
 
+    // store game status
+    const over = store.game.over
+    // log game status
+    console.log(over)
+
     // make API request to update game
-    api.updateGame(player, cellData)
+    api.updateGame(player, index, over)
+      .then(ui.onUpdateSuccess)
+      .catch(ui.onError)
   } else {
     console.log('space is taken')
     ui.onError()

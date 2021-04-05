@@ -25,12 +25,13 @@ const newGame = function () {
   })
 }
 
-const updateGame = function (player, cellData) {
+const updateGame = function (player, index, over) {
   // check data API is receiving
   console.log(`
     This is the API data:
       id: ${player},
-      cellData: ${cellData}`)
+      index: ${index},
+      over: ${over}`)
   console.log()
   return $.ajax({
     // define PATCH method
@@ -41,10 +42,10 @@ const updateGame = function (player, cellData) {
     data: {
       game: {
         cell: {
-          index: cellData,
+          index: index,
           value: player
         },
-        over: false
+        over: over
       }
     },
     headers: {

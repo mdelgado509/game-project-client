@@ -12,6 +12,9 @@ const onNewGameSuccess = function (response) {
   // assign team X
   store.isTeamX = true
 
+  // game winner
+  store.winner = ''
+
   // display game board
   $('.game-board').show()
   // notify user of a new game
@@ -21,39 +24,75 @@ const onNewGameSuccess = function (response) {
   $('#new-game').hide()
 }
 
+const onUpdateSuccess = function (response) {
+  // store response API data
+  console.log(response)
+  // store winner data
+  console.log(store.winner)
+  if (store.game.over) {
+    if (store.winner) {
+      // add winner message
+      $('#message').text('Game over! Team ' + store.winner + ' won.')
+    } else {
+      $('#message').text('Game over! Looks like a tie.')
+    }
+  }
+}
+
 const addToken = function (index) {
   if (store.isTeamX) {
     // store player info in game cell array
     store.game.cells[index] = {
       index: index,
-      value: 'x'
+      value: 'X'
     }
     // log array information
     console.log(store.game.cells)
+
     // add X to the board
-    document.getElementById(index).innerHTML = 'x'
+    document.getElementById(index).innerHTML = 'X'
+
     // check for winner
     checkWinner(store.game.cells)
-    // rotate player from X to O
-    store.isTeamX = false
-    // notify user of turn change
-    $('#message').text("It's now team O's turn")
+
+    // check for tie
+    checkTie(store.game.cells)
+
+    // check if game is over
+    const over = store.game.over
+    if (!over) {
+      // rotate player from X to O
+      store.isTeamX = false
+      // notify user of turn change
+      $('#message').text("It's now team O's turn")
+    }
   } else {
     // store player info in game cell array
     store.game.cells[index] = {
       token: index,
-      value: 'o'
+      value: 'O'
     }
+
     // log array information
     console.log(store.game.cells)
+
     // add O to the board
-    document.getElementById(index).innerHTML = 'o'
+    document.getElementById(index).innerHTML = 'O'
+
     // check for winner
     checkWinner(store.game.cells)
-    // rotate player from X to O
-    store.isTeamX = true
-    // notify user of turn change
-    $('#message').text("It's now team X's turn")
+
+    // check for tie
+    checkTie(store.game.cells)
+
+    // check if game is over
+    const over = store.game.over
+    if (!over) {
+      // rotate player from X to O
+      store.isTeamX = true
+      // notify user of turn change
+      $('#message').text("It's now team X's turn")
+    }
   }
 }
 
@@ -71,33 +110,56 @@ const checkWinner = function (arr) {
   }
   // create a conditional test if winning spaces have been filled
   if (winnerArray[0] === winnerArray[1] && winnerArray[1] === winnerArray[2]) {
-    console.log('game over')
+    store.game.over = true
+    store.winner = $(event.target).text()
   } else if (winnerArray[0] === winnerArray[3] && winnerArray[3] === winnerArray[6]) {
-    console.log('game over')
+    store.game.over = true
+    store.winner = $(event.target).text()
   } else if (winnerArray[0] === winnerArray[4] && winnerArray[4] === winnerArray[8]) {
-    console.log('game over')
+    store.game.over = true
+    store.winner = $(event.target).text()
   } else if (winnerArray[2] === winnerArray[4] && winnerArray[4] === winnerArray[6]) {
-    console.log('game over')
+    store.game.over = true
+    store.winner = $(event.target).text()
   } else if (winnerArray[1] === winnerArray[4] && winnerArray[4] === winnerArray[7]) {
-    console.log('game over')
+    store.game.over = true
+    store.winner = $(event.target).text()
   } else if (winnerArray[2] === winnerArray[5] && winnerArray[5] === winnerArray[8]) {
-    console.log('game over')
+    store.game.over = true
+    store.winner = $(event.target).text()
   } else if (winnerArray[3] === winnerArray[4] && winnerArray[4] === winnerArray[5]) {
-    console.log('game over')
+    store.game.over = true
+    store.winner = $(event.target).text()
   } else if (winnerArray[6] === winnerArray[7] && winnerArray[7] === winnerArray[8]) {
-    console.log('game over')
+    store.game.over = true
+    store.winner = $(event.target).text()
   } else {
     console.log('game on')
   }
 }
 
+const checkTie = function (arr) {
+  console.log(arr)
+  const spaceTaken = function (space) {
+    if (space !== '') {
+      return true
+    }
+  }
+  const result = arr.every(spaceTaken)
+  console.log(result)
+  if (result) {
+    store.game.over = true
+  }
+}
+
 const onError = function () {
   // display error
-  $('#message').text('Try again!')
+  $('#message').text('Something went wrong!')
 }
 
 module.exports = {
   onNewGameSuccess,
+  onUpdateSuccess,
   addToken,
   checkWinner,
   onError
