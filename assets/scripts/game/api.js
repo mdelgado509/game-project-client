@@ -25,6 +25,36 @@ const newGame = function () {
   })
 }
 
+const updateGame = function (player, index, over) {
+  // check data API is receiving
+  console.log(`
+    This is the API data:
+      id: ${player},
+      index: ${index},
+      over: ${over}`)
+  console.log()
+  return $.ajax({
+    // define PATCH method
+    method: 'PATCH',
+    // call url with id
+    url: config.apiUrl + '/games/' + store.game._id,
+    // verify user login with token
+    data: {
+      game: {
+        cell: {
+          index: index,
+          value: player
+        },
+        over: over
+      }
+    },
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
 module.exports = {
-  newGame
+  newGame,
+  updateGame
 }
