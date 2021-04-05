@@ -21,17 +21,17 @@ const onNewGameSuccess = function (response) {
   $('#new-game').hide()
 }
 
-const addToken = function (spaceID) {
+const addToken = function (index) {
   if (store.isTeamX) {
     // store player info in game cell array
-    store.game.cells[spaceID] = {
-      token: store.user.token,
-      isTeamX: true
+    store.game.cells[index] = {
+      index: index,
+      value: 'x'
     }
     // log array information
     console.log(store.game.cells)
     // add X to the board
-    document.getElementById(spaceID).innerHTML = 'X'
+    document.getElementById(index).innerHTML = 'x'
     // check for winner
     checkWinner(store.game.cells)
     // rotate player from X to O
@@ -40,14 +40,14 @@ const addToken = function (spaceID) {
     $('#message').text("It's now team O's turn")
   } else {
     // store player info in game cell array
-    store.game.cells[spaceID] = {
-      token: store.user.token,
-      isTeamX: false
+    store.game.cells[index] = {
+      token: index,
+      value: 'o'
     }
     // log array information
     console.log(store.game.cells)
-    // add 0 to the board
-    document.getElementById(spaceID).innerHTML = 'O'
+    // add O to the board
+    document.getElementById(index).innerHTML = 'o'
     // check for winner
     checkWinner(store.game.cells)
     // rotate player from X to O
@@ -58,10 +58,10 @@ const addToken = function (spaceID) {
 }
 
 const checkWinner = function (arr) {
-  // create array to represent empty spaces
+  // create array to represent 9 different empty spaces
   const winnerArray = [0, 1, 2, 3, 4, 5, 6, 7, 8]
   // create array to represent filled in spaces
-  const teamArray = arr.map(element => element.isTeamX)
+  const teamArray = arr.map(element => element.value)
   // modify array to include boolean values of filled spaces
   // skip over undefined spaces
   for (let i = 0; i < arr.length; i++) {
