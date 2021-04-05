@@ -24,36 +24,41 @@ const onNewGame = function (event) {
 }
 
 const onBoardClick = function (event) {
-  // check click handler functionality
-  console.log('the game board was clicked')
-
-  // store cell index information
-  const index = $(event.target).data('cell-index')
-  console.log(index)
-
-  // create conditional to check if space contains HTML text or not
-  if (event.target.innerHTML === '') {
-    // log space is empty
-    console.log('space is empty')
-    // add token to the board
-    ui.addToken(index)
-
-    // get player value
-    const player = $(event.target).text()
-    console.log(player)
-
-    // store game status
-    const over = store.game.over
-    // log game status
-    console.log(over)
-
-    // make API request to update game
-    api.updateGame(player, index, over)
-      .then(ui.onUpdateSuccess)
-      .catch(ui.onError)
+  // if game is over message the user and stop function call
+  if (store.game.over) {
+    $('#message').text('Game is over! Start a new game to continue.')
   } else {
-    console.log('space is taken')
-    ui.onError()
+    // check click handler functionality
+    console.log('the game board was clicked')
+
+    // store cell index information
+    const index = $(event.target).data('cell-index')
+    console.log(index)
+
+    // create conditional to check if space contains HTML text or not
+    if (event.target.innerHTML === '') {
+      // log space is empty
+      console.log('space is empty')
+      // add token to the board
+      ui.addToken(index)
+
+      // get player value
+      const player = $(event.target).text()
+      console.log(player)
+
+      // store game status
+      const over = store.game.over
+      // log game status
+      console.log(over)
+
+      // make API request to update game
+      api.updateGame(player, index, over)
+        .then(ui.onUpdateSuccess)
+        .catch(ui.onError)
+    } else {
+      console.log('space is taken')
+      ui.onError()
+    }
   }
 }
 
