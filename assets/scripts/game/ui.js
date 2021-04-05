@@ -5,6 +5,7 @@
 
 const store = require('../store')
 
+// update the DOM when the API sends new game data
 const onNewGameSuccess = function (response) {
   // clear game board if it exists
   $('.box').text('')
@@ -15,14 +16,14 @@ const onNewGameSuccess = function (response) {
   // assign team X
   store.isTeamX = true
 
-  // game winner
+  // game winner reset
   store.winner = ''
 
   // display game board
   $('.game-board').show()
 
   // notify user of a new game
-  $('#message').text('New game was created. You begin the game as team X')
+  $('#message').text('New game was created. You start as team X')
 
   // hide change password and new game fields/button
   $('#change-password').hide()
@@ -30,13 +31,13 @@ const onNewGameSuccess = function (response) {
   $('#view-games').hide()
 }
 
+// update the DOM when the API sends game data
 const onViewGamesSuccess = function (response) {
-  // log game data in console
-  console.log(response)
   // display number of games played
   $('#message').text('You played ' + response.games.length + ' game(s)')
 }
 
+// update the DOM when the API succefully updates game data
 const onUpdateSuccess = function () {
   // if true then show game options and display result
   if (store.game.over) {
@@ -52,15 +53,15 @@ const onUpdateSuccess = function () {
   }
 }
 
+// update DOM when user adds token to board
 const addToken = function (index) {
+  // if team X
   if (store.isTeamX) {
-    // store player info in game cell array
+    // store player value and space index in temporary game cell array
     store.game.cells[index] = {
       index: index,
       value: 'X'
     }
-    // log array information
-    console.log(store.game.cells)
 
     // add X to the board
     document.getElementById(index).innerHTML = 'X'
@@ -73,21 +74,20 @@ const addToken = function (index) {
 
     // check if game is over
     const over = store.game.over
+    // if game is over do not rotate teams or message user
     if (!over) {
-      // rotate player from X to O
+      // otherwise rotate player from X to O
       store.isTeamX = false
-      // notify user of turn change
+      // and notify user of turn change
       $('#message').text("It's now team O's turn")
     }
+  // if player is team O
   } else {
     // store player info in game cell array
     store.game.cells[index] = {
       token: index,
       value: 'O'
     }
-
-    // log array information
-    console.log(store.game.cells)
 
     // add O to the board
     document.getElementById(index).innerHTML = 'O'
@@ -100,30 +100,36 @@ const addToken = function (index) {
 
     // check if game is over
     const over = store.game.over
+    // if game is over do not rotate teams or message user
     if (!over) {
-      // rotate player from X to O
+      // otherwise rotate player from X to O
       store.isTeamX = true
-      // notify user of turn change
+      // and notify user of turn change
       $('#message').text("It's now team X's turn")
     }
   }
 }
 
+// check for winner
 const checkWinner = function (arr) {
-  // create array to represent 9 different empty spaces
+  // create array with 9 different spaces
   const winnerArray = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-  // create array to represent filled in spaces
-  const teamArray = arr.map(element => element.value)
-  // modify array to include boolean values of filled spaces
-  // skip over undefined spaces
+  // map the game cell values to an array
+  const gameArray = arr.map(element => element.value)
+  // the winnerArray is updated with values from the gameArray
   for (let i = 0; i < arr.length; i++) {
-    if (teamArray[i] !== undefined) {
-      winnerArray[i] = teamArray[i]
+    // undefined values are ignored
+    if (gameArray[i] !== undefined) {
+      // winnerArray is replaced with 'X' or 'O' values
+      winnerArray[i] = gameArray[i]
     }
   }
-  // create a conditional test if winning spaces have been filled
+  // create a conditional test if winning spaces have been filled with
+  // identical values
   if (winnerArray[0] === winnerArray[1] && winnerArray[1] === winnerArray[2]) {
+    // end the game
     store.game.over = true
+    // store player value as winner
     store.winner = $(event.target).text()
   } else if (winnerArray[0] === winnerArray[3] && winnerArray[3] === winnerArray[6]) {
     store.game.over = true
@@ -146,24 +152,29 @@ const checkWinner = function (arr) {
   } else if (winnerArray[6] === winnerArray[7] && winnerArray[7] === winnerArray[8]) {
     store.game.over = true
     store.winner = $(event.target).text()
-  } else {
-    console.log('game on')
   }
 }
 
+// check for tie
 const checkTie = function (arr) {
+  // define predicate function to test if spaces have been filled
   const spaceTaken = function (space) {
+    // if space isn't the default empty string return true
     if (space !== '') {
       return true
     }
   }
+  // itirate over the store.game.cells array to see if all spaces have gone
+  // from empty strings to occupied and store that boolean result
   const result = arr.every(spaceTaken)
-  console.log(result)
+  // if result is true and every space is taken
   if (result) {
+    // then end the game
     store.game.over = true
   }
 }
 
+// update the DOM for unsuccessful user requests
 const onError = function () {
   // display error
   $('#message').text('Something went wrong!')
