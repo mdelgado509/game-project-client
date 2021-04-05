@@ -33,6 +33,8 @@ const onNewGameSuccess = function (response) {
 const onViewGamesSuccess = function (response) {
   // log game data in console
   console.log(response)
+  // display number of games played
+  $('#message').text('You played ' + response.games.length + ' game(s)')
 }
 
 const onUpdateSuccess = function () {
