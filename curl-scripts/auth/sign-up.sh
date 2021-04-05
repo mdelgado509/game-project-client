@@ -1,4 +1,4 @@
-# EMAIL=mdelgado509@gmail.com PASSWORD=a sh curl-scripts/auth/sign-up.sh
+# EMAIL=mdelgado509@grail.com PASSWORD=a sh curl-scripts/auth/sign-up.sh
 
 curl "https://tic-tac-toe-api-development.herokuapp.com/sign-up" \
   --include \

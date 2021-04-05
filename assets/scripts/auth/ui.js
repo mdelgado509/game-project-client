@@ -26,6 +26,7 @@ const onSignInSuccess = function (response) {
   $('#change-password').show()
   $('#sign-out').show()
   $('#new-game').show()
+  $('#view-games').show()
   // hide sign up and sign in fields
   $('#sign-up').hide()
   $('#sign-in').hide()
@@ -50,6 +51,8 @@ const onSignOutSuccess = function () {
   $('#change-password').hide()
   $('#sign-out').hide()
   $('#new-game').hide()
+  $('#view-games').hide()
+  $('.game-board').hide()
 }
 
 const onError = function () {

@@ -6,10 +6,10 @@
 const store = require('../store')
 
 const onNewGameSuccess = function (response) {
-  // clear game board
+  // clear game board if it exists
   $('.box').text('')
 
-  // store game information (game cells)
+  // store API game information
   store.game = response.game
 
   // assign team X
@@ -20,22 +20,29 @@ const onNewGameSuccess = function (response) {
 
   // display game board
   $('.game-board').show()
+
   // notify user of a new game
   $('#message').text('New game was created. You begin the game as team X')
+
   // hide change password and new game fields/button
   $('#change-password').hide()
   $('#new-game').hide()
+  $('#view-games').hide()
 }
 
-const onUpdateSuccess = function (response) {
-  // store response API data
+const onViewGamesSuccess = function (response) {
+  // log game data in console
   console.log(response)
-  // store winner data
-  console.log(store.winner)
+}
+
+const onUpdateSuccess = function () {
+  // if true then show game options and display result
   if (store.game.over) {
+    // show buttons
     $('#new-game').show()
+    $('#view-games').show()
     if (store.winner) {
-      // add winner message
+      // display result
       $('#message').text('Game over! Team ' + store.winner + ' won.')
     } else {
       $('#message').text('Game over! Looks like a tie.')
@@ -143,7 +150,6 @@ const checkWinner = function (arr) {
 }
 
 const checkTie = function (arr) {
-  console.log(arr)
   const spaceTaken = function (space) {
     if (space !== '') {
       return true
@@ -163,8 +169,8 @@ const onError = function () {
 
 module.exports = {
   onNewGameSuccess,
+  onViewGamesSuccess,
   onUpdateSuccess,
   addToken,
-  checkWinner,
   onError
 }
