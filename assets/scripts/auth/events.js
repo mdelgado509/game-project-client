@@ -26,6 +26,17 @@ const onSignUp = function (event) {
     .catch(ui.onError)
 }
 
+const onUserExists = function (event) {
+  // prevent default refresh page
+  event.preventDefault()
+
+  // hide sign up
+  $('#sign-up').hide()
+
+  // show sign in
+  $('#sign-in').show()
+}
+
 const onSignIn = function (event) {
   // prevent default refresh page
   event.preventDefault()
@@ -67,6 +78,7 @@ const onSignOut = function (event) {
 
 module.exports = {
   onSignUp,
+  onUserExists,
   onSignIn,
   onChangePassword,
   onSignOut

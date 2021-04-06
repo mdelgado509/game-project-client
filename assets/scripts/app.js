@@ -20,6 +20,7 @@ $(() => {
 
   // create event listener for submit events (sign-up, sign-in, change-pw)
   $('#sign-up').on('submit', authEvents.onSignUp)
+  $('#user-exists').on('click', authEvents.onUserExists)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#change-password').on('submit', authEvents.onChangePassword)
 

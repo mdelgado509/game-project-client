@@ -12,6 +12,8 @@ const onSignUpSuccess = function () {
   $('#message').text('You succesfully signed up! Sign in to continue.')
   // clear fields
   $('#sign-up').trigger('reset')
+  $('#sign-in').show()
+  $('#sign-up').hide()
 }
 
 const onSignInSuccess = function (response) {
@@ -26,7 +28,7 @@ const onSignInSuccess = function (response) {
   $('#new-game').show()
   $('#view-games').show()
   // hide sign up and sign in fields
-  $('#sign-up').hide()
+  // $('#sign-up').hide()
   $('#sign-in').hide()
 }
 
@@ -44,7 +46,6 @@ const onSignOutSuccess = function () {
   store.user = null
   // show sign up and sign in
   $('#sign-up').show()
-  $('#sign-in').show()
   // high sign out and change password fields
   $('#change-password').hide()
   $('#sign-out').hide()
