@@ -22,5 +22,22 @@
 .box {
   background-color: orange;
   border: 1px solid black;
-
+  // align text in middle of cells horizontally
+  text-align: center;
+}
+// don't display top edge of game board
+.top {
+    border-top: none;
+}
+// don't display bottom edge of game board
+.bottom {
+    border-bottom: none;
+}
+// don't display left edge of game board
+.left {
+    border-left: none;
+}
+// don't display right edge of game board
+.right {
+    border-right: none;
 }
