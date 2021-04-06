@@ -28,11 +28,11 @@ const onSignInSuccess = function (response) {
 
   // show game header
   $('#game-header').show()
-  // // show fields change password and sign out
-  // $('#change-password').show()
-  // $('#sign-out').show()
-  // $('#new-game').show()
-  // $('#view-games').show()
+  // // show fields in case hidden
+  $('#show-change-password').show()
+  $('#sign-out').show()
+  $('#new-game').show()
+  $('#view-games').show()
   // hide sign up and sign in fields
   // $('#sign-up').hide()
   $('#sign-in').hide()
@@ -65,7 +65,7 @@ const onSignOutSuccess = function () {
   // hide sign out and change password fields
   $('#change-password').hide()
   // $('#sign-out').hide()
-  $('#new-game').hide()
+  // $('#new-game').hide()
   $('#view-games').hide()
   $('.game').hide()
 }

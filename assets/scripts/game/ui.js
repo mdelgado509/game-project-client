@@ -26,7 +26,7 @@ const onNewGameSuccess = function (response) {
   $('#message').text('New game was created. You start as team X')
 
   // hide change password and new game fields/button
-  $('#change-password').hide()
+  $('#show-change-password').hide()
   $('#new-game').hide()
   $('#view-games').hide()
 }
