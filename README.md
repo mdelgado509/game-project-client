@@ -1,7 +1,6 @@
 # Application Title: Tic-Tac-Toe
 
-This application allows the user to do x, y, and z. Maybe here's a reason why I
-wanted to do this project, or came up with this idea.
+This application allows the user to sign up, sign in, and play a game of tic-tac-toe. The user is also able to change passwords and view the amount of games played under the account.
 
 ## Important Links
 

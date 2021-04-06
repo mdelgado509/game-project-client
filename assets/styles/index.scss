@@ -1,7 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  margin: auto;
+}
+
 .auth {
-  align-items: center;
   display: grid;
   justify-content: center;
 }
@@ -26,6 +29,9 @@
   line-height: normal;
   // align text in middle of cells horizontally
   text-align: center;
+  &:hover {
+    background-color: orange;
+  }
 }
 // don't display top edge of game board
 .top {
