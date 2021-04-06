@@ -12,46 +12,55 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
+      <header id="game-header" class="hidden">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link" href="#">New Game</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">View Games</a>
+          </li>
+          <li class="nav-item">
+            <a id="show-change-password" class="nav-link" href="#">Change Password</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Sign Out</a>
+          </li>
+        </ul>
+      </header>
       <main>
         <section class="auth">
 
           <form id="sign-up" class="form-signin">
             <h1 class="h1 mb-3 font-weight-normal text-center">Tic-Tac-Toe</h1>
-            <!-- Replace with logo or image later -->
-            <!-- <img class="mb-4" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
             <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
             <input name="credentials[email]" type="email" class="form-control" placeholder="Email address" required autofocus>
             <input name="credentials[password]" type="password" class="form-control" placeholder="Password" required>
             <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Password confirmation" required>
-            <p>Already have an account sign in <a id="user-exists" href="#">here</a>.</p>
-            <!-- <div class="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me"> Remember me
-              </label>
-            </div> -->
+            <p>Already have an account? Sign in <a id="user-exists" href="#">here</a>.</p>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
           </form>
 
           <form id="sign-in" class="form-signin hidden">
             <h1 class="h1 mb-3 font-weight-normal text-center">Tic-Tac-Toe</h1>
-            <!-- Replace with logo or image later -->
-            <!-- <img class="mb-4" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
             <input name="credentials[email]" type="email" class="form-control" placeholder="Email address" required autofocus>
             <input name="credentials[password]" type="password" class="form-control" placeholder="Password" required>
-            <!-- <div class="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me"> Remember me
-              </label>
-            </div> -->
+            <p>Don't have an account? Sign up <a id="new-user" href="#">here</a>.</p>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
           </form>
 
-          <form id="change-password" class="hidden">
-            <input name="passwords[old]" type="password" placeholder="old password" required>
-            <input name="passwords[new]" type="password" placeholder="new password" required>
-            <button>Change Password</button>
+          <form id="change-password" class="form-signin hidden">
+            <h1 class="h1 mb-3 font-weight-normal text-center">Change Password</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Please fill out the forms</h1>
+            <input name="passwords[old]" type="password" class="form-control" placeholder="Old password" required autofocus>
+            <input name="passwords[new]" type="password" class="form-control" placeholder="New password" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
           </form>
+
+        </section>
+
+        <section class="post-auth">
           <form id="sign-out" class="hidden">
             <button>Sign Out</button>
           </form>
@@ -62,9 +71,18 @@
             <button id="view-games" class="hidden">View Games</button>
           </form>
         </section>
+
+
+
+
+
         <div class="message-board">
           <p id="message"></p>
         </div>
+
+
+
+
         <section class="game hidden">
           <div class="game-board">
             <div id="0" class="box top left" data-cell-index="0"></div>

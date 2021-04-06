@@ -22,11 +22,17 @@ const onSignInSuccess = function (response) {
   $('#message').text('You succesfully signed in ' + store.user.email)
   // reset field
   $('#sign-in').trigger('reset')
-  // show fields change password and sign out
-  $('#change-password').show()
-  $('#sign-out').show()
-  $('#new-game').show()
-  $('#view-games').show()
+
+  // set user-name on game header
+  $('#user-name').text(store.user.email)
+
+  // show game header
+  $('#game-header').show()
+  // // show fields change password and sign out
+  // $('#change-password').show()
+  // $('#sign-out').show()
+  // $('#new-game').show()
+  // $('#view-games').show()
   // hide sign up and sign in fields
   // $('#sign-up').hide()
   $('#sign-in').hide()
@@ -37,6 +43,12 @@ const onChangePasswordSuccess = function () {
   $('#message').text('You succesfully changed your password ' + store.user.email)
   // reset field
   $('#change-password').trigger('reset')
+
+  // hide change password
+  $('#change-password').hide()
+
+  // show game header options
+  $('#game-header').show()
 }
 
 const onSignOutSuccess = function () {
@@ -46,7 +58,11 @@ const onSignOutSuccess = function () {
   store.user = null
   // show sign up and sign in
   $('#sign-up').show()
-  // high sign out and change password fields
+
+  // hide game-header
+  $('#game-header').hide()
+
+  // hide sign out and change password fields
   $('#change-password').hide()
   $('#sign-out').hide()
   $('#new-game').hide()

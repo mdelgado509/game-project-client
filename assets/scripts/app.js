@@ -21,10 +21,14 @@ $(() => {
   // create event listener for submit events (sign-up, sign-in, change-pw)
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#user-exists').on('click', authEvents.onUserExists)
+  $('#new-user').on('click', authEvents.onNewUser)
   $('#sign-in').on('submit', authEvents.onSignIn)
-  $('#change-password').on('submit', authEvents.onChangePassword)
+
+  // listen for nav bar show change password click event
+  $('#show-change-password').on('click', authEvents.onShowChangePassword)
 
   // create event listener for click events (sign-out, new-game, view-games)
+  $('#change-password').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#new-game').on('click', gameEvents.onNewGame)
   $('#view-games').on('click', gameEvents.onViewGames)

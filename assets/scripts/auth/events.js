@@ -37,6 +37,17 @@ const onUserExists = function (event) {
   $('#sign-in').show()
 }
 
+const onNewUser = function (event) {
+  // prevent default refresh page
+  event.preventDefault()
+
+  // hide sign in
+  $('#sign-in').hide()
+
+  // show sign up
+  $('#sign-up').show()
+}
+
 const onSignIn = function (event) {
   // prevent default refresh page
   event.preventDefault()
@@ -50,6 +61,17 @@ const onSignIn = function (event) {
   api.signIn(formData)
     .then(ui.onSignInSuccess)
     .catch(ui.onError)
+}
+
+const onShowChangePassword = function (event) {
+  // prevent default refresh page
+  event.preventDefault()
+
+  // hide game header
+  $('#game-header').hide()
+
+  // show change password
+  $('#change-password').show()
 }
 
 const onChangePassword = function (event) {
@@ -79,7 +101,9 @@ const onSignOut = function (event) {
 module.exports = {
   onSignUp,
   onUserExists,
+  onNewUser,
   onSignIn,
+  onShowChangePassword,
   onChangePassword,
   onSignOut
 }
