@@ -64,7 +64,7 @@ const onSignOutSuccess = function () {
 
   // hide sign out and change password fields
   $('#change-password').hide()
-  $('#sign-out').hide()
+  // $('#sign-out').hide()
   $('#new-game').hide()
   $('#view-games').hide()
   $('.game').hide()
