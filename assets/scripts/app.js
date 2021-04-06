@@ -12,6 +12,9 @@ const gameEvents = require('./game/events')
 
 $(() => {
   // hide the elements we don't want to see at first
+  $('#game-header').hide()
+  $('#sign-in').hide()
+  $('#change-password').hide()
   // $('#change-password').hide()
   // $('#sign-out').hide()
   // $('#new-game').hide()
