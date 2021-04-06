@@ -25,25 +25,25 @@
             <input name="credentials[password]" type="password" placeholder="password" required>
             <button>Sign In</button>
           </form>
-          <form id="change-password">
+          <form id="change-password" class="hidden">
             <input name="passwords[old]" type="password" placeholder="old password" required>
             <input name="passwords[new]" type="password" placeholder="new password" required>
             <button>Change Password</button>
           </form>
-          <form id="sign-out">
+          <form id="sign-out" class="hidden">
             <button>Sign Out</button>
           </form>
           <form>
-            <button id="new-game">New Game</button>
+            <button id="new-game" class="hidden">New Game</button>
           </form>
           <form>
-            <button id="view-games">View Games</button>
+            <button id="view-games" class="hidden">View Games</button>
           </form>
           </section>
           <div class="message-board">
             <p id="message"></p>
           </div>
-        <section class="game">
+        <section class="game hidden">
           <div class="game-board">
             <div id="0" class="box top left" data-cell-index="0"></div>
             <div id="1" class="box top" data-cell-index="1"></div>

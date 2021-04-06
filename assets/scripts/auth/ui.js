@@ -50,7 +50,7 @@ const onSignOutSuccess = function () {
   $('#sign-out').hide()
   $('#new-game').hide()
   $('#view-games').hide()
-  $('.game-board').hide()
+  $('.game').hide()
 }
 
 const onError = function () {

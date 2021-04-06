@@ -20,7 +20,7 @@ const onNewGameSuccess = function (response) {
   store.winner = ''
 
   // display game board
-  $('.game-board').show()
+  $('.game').show()
 
   // notify user of a new game
   $('#message').text('New game was created. You start as team X')
