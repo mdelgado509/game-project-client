@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic-Tac-Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <header id="game-header" class="hidden">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a id="new-game" class="nav-link" href="#">New Game</a>
+          </li>
+          <li class="nav-item">
+            <a id="view-games" class="nav-link" href="#">View Games</a>
+          </li>
+          <li class="nav-item">
+            <a id="show-change-password" class="nav-link" href="#">Change Password</a>
+          </li>
+          <li class="nav-item">
+            <a id="sign-out" class="nav-link" href="#">Sign Out</a>
+          </li>
+        </ul>
+      </header>
+      <main>
+        <section class="auth">
+          <form id="sign-up" class="form-signin">
+            <h1 class="h1 mb-3 font-weight-normal text-center">Tic-Tac-Toe</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+            <input name="credentials[email]" type="email" class="form-control" placeholder="Email address" required autofocus>
+            <input name="credentials[password]" type="password" class="form-control" placeholder="Password" required>
+            <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Password confirmation" required>
+            <p>Already have an account? Sign in <a id="user-exists" href="#">here</a>.</p>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+          </form>
+          <form id="sign-in" class="form-signin hidden">
+            <h1 class="h1 mb-3 font-weight-normal text-center">Tic-Tac-Toe</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <input name="credentials[email]" type="email" class="form-control" placeholder="Email address" required autofocus>
+            <input name="credentials[password]" type="password" class="form-control" placeholder="Password" required>
+            <p>Don't have an account? Sign up <a id="new-user" href="#">here</a>.</p>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+          </form>
+          <form id="change-password" class="form-signin hidden">
+            <h1 class="h1 mb-3 font-weight-normal text-center">Change Password</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Please fill out the forms</h1>
+            <input name="passwords[old]" type="password" class="form-control" placeholder="Old password" required autofocus>
+            <input name="passwords[new]" type="password" class="form-control" placeholder="New password" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Change Password</button>
+          </form>
+        </section>
+        <section>
+          <div class="message-board">
+            <p id="message"></p>
+          </div>
+        </section>
+        <section class="game hidden">
+          <div class="game-board">
+            <div id="0" class="box top left" data-cell-index="0"></div>
+            <div id="1" class="box top" data-cell-index="1"></div>
+            <div id="2" class="box top right" data-cell-index="2"></div>
+            <div id="3" class="box left" data-cell-index="3"></div>
+            <div id="4" class="box" data-cell-index="4"></div>
+            <div id="5" class="box right" data-cell-index="5"></div>
+            <div id="6" class="box bottom left" data-cell-index="6"></div>
+            <div id="7" class="box bottom" data-cell-index="7"></div>
+            <div id="8" class="box bottom right" data-cell-index="8"></div>
+          </div>
+        </section>
+      </main>
+    </body>
+</html>
