@@ -13,15 +13,15 @@
 
 .game-board {
   display: grid;
-  grid-template-rows: 100px 100px 100px;
-  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 200px 200px 200px;
+  grid-template-columns: 200px 200px 200px;
   justify-content: center;
 }
 
 .box {
   border: 1px solid black;
   font-family: fantasy;
-  font-size: 80px;
+  font-size: 160px;
   line-height: normal;
   // align text in middle of cells horizontally
   text-align: center;
@@ -47,4 +47,28 @@
 }
 .hidden {
   display: none;
+}
+
+@media screen and (max-width: 992px) {
+  .game-board {
+    display: grid;
+    grid-template-rows: 150px 150px 150px;
+    grid-template-columns: 150px 150px 150px;
+  }
+  .box {
+    font-size: 120px;
+    line-height: normal;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .game-board {
+    display: grid;
+    grid-template-rows: 100px 100px 100px;
+    grid-template-columns: 100px 100px 100px;;
+  }
+  .box {
+    font-size: 80px;
+    line-height: normal;
+  }
 }
