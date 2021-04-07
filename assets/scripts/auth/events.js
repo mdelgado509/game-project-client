@@ -79,6 +79,9 @@ const onShowChangePassword = function (event) {
   // hide game header
   $('#game-header').hide()
 
+  // hide game board
+  $('.game').hide()
+
   // show change password
   $('#change-password').show()
 }

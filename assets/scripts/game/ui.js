@@ -44,6 +44,7 @@ const onUpdateSuccess = function () {
     // show buttons
     $('#new-game').show()
     $('#view-games').show()
+    $('#show-change-password').show()
     if (store.winner) {
       // display result
       $('#message').text('Game over! Team ' + store.winner + ' won.')
