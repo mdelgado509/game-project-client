@@ -30,6 +30,9 @@ const onUserExists = function (event) {
   // prevent default refresh page
   event.preventDefault()
 
+  // clear message board
+  $('#message').text('')
+
   // hide sign up
   $('#sign-up').hide()
 
@@ -40,6 +43,9 @@ const onUserExists = function (event) {
 const onNewUser = function (event) {
   // prevent default refresh page
   event.preventDefault()
+
+  // clear message board
+  $('#message').text('')
 
   // hide sign in
   $('#sign-in').hide()
@@ -66,6 +72,9 @@ const onSignIn = function (event) {
 const onShowChangePassword = function (event) {
   // prevent default refresh page
   event.preventDefault()
+
+  // clear message board
+  $('#message').text('')
 
   // hide game header
   $('#game-header').hide()
