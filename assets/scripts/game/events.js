@@ -69,26 +69,31 @@ const onBoardClick = function (event) {
     $('#message').text('Game is over! Start a new game to continue.')
     // otherwise execute code as follows to handle board clicks
   } else {
-    // create conditional to check if space contains HTML text or not
-    if (event.target.innerHTML === '') {
-      // store clicked cell index information
-      const index = $(event.target).data('cell-index')
-      // update the DOM and user view
-      ui.addToken(index)
-
-      // get player value
-      const player = $(event.target).text()
-
-      // store game status
-      const over = store.game.over
-
-      // make API request to update game
-      api.updateGame(player, index, over)
-        .then(ui.onUpdateSuccess)
-        .catch(ui.onError)
+    // condition to test if it's the computer's turn
+    if (store.isComputerTurn) {
+      $('#message').text("It's the computer's turn! Be patient.")
     } else {
-      // notify user of error when taken space is clicked
-      $('#message').text('That space is taken!')
+      // create conditional to check if space contains HTML text or not
+      if (event.target.innerHTML === '') {
+        // store clicked cell index information
+        const index = $(event.target).data('cell-index')
+        // update the DOM and user view
+        ui.addToken(index)
+
+        // get player value
+        const player = $(event.target).text()
+
+        // store game status
+        const over = store.game.over
+
+        // make API request to update game
+        api.updateGame(player, index, over)
+          .then(ui.onUpdateSuccess)
+          .catch(ui.onError)
+      } else {
+        // notify user of error when taken space is clicked
+        $('#message').text('That space is taken!')
+      }
     }
   }
 }

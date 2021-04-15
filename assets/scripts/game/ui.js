@@ -27,6 +27,9 @@ const onNewGameSuccess = function (response) {
   // assign team X
   store.isTeamX = true
 
+  // assign computer turn
+  store.isComputerTurn = false
+
   // game winner reset
   store.winner = ''
 
@@ -67,8 +70,62 @@ const onUpdateSuccess = function () {
 
 // update DOM when user adds token to board
 const addToken = function (index) {
-  // if team X
-  if (store.isTeamX) {
+  // if user is playing against themselves
+  if (store.isPlayerSelf) {
+    // if team X
+    if (store.isTeamX) {
+      // store player value and space index in temporary game cell array
+      store.game.cells[index] = {
+        index: index,
+        value: 'X'
+      }
+
+      // add X to the board
+      document.getElementById(index).innerHTML = 'X'
+
+      // check for winner
+      checkWinner(store.game.cells)
+
+      // check for tie
+      checkTie(store.game.cells)
+
+      // check if game is over
+      const over = store.game.over
+      // if game is over do not rotate teams or message user
+      if (!over) {
+        // otherwise rotate player from X to O
+        store.isTeamX = false
+        // and notify user of turn change
+        $('#message').text("It's now team O's turn")
+      }
+    // if player is team O
+    } else {
+      // store player info in game cell array
+      store.game.cells[index] = {
+        index: index,
+        value: 'O'
+      }
+
+      // add O to the board
+      document.getElementById(index).innerHTML = 'O'
+
+      // check for winner
+      checkWinner(store.game.cells)
+
+      // check for tie
+      checkTie(store.game.cells)
+
+      // check if game is over
+      const over = store.game.over
+      // if game is over do not rotate teams or message user
+      if (!over) {
+        // otherwise rotate player from X to O
+        store.isTeamX = true
+        // and notify user of turn change
+        $('#message').text("It's now team X's turn")
+      }
+    }
+  } else { // if the user is playing against the computer
     // store player value and space index in temporary game cell array
     store.game.cells[index] = {
       index: index,
@@ -86,38 +143,12 @@ const addToken = function (index) {
 
     // check if game is over
     const over = store.game.over
-    // if game is over do not rotate teams or message user
+    // if game is over do not message user
     if (!over) {
-      // otherwise rotate player from X to O
-      store.isTeamX = false
-      // and notify user of turn change
-      $('#message').text("It's now team O's turn")
-    }
-  // if player is team O
-  } else {
-    // store player info in game cell array
-    store.game.cells[index] = {
-      index: index,
-      value: 'O'
-    }
-
-    // add O to the board
-    document.getElementById(index).innerHTML = 'O'
-
-    // check for winner
-    checkWinner(store.game.cells)
-
-    // check for tie
-    checkTie(store.game.cells)
-
-    // check if game is over
-    const over = store.game.over
-    // if game is over do not rotate teams or message user
-    if (!over) {
-      // otherwise rotate player from X to O
-      store.isTeamX = true
-      // and notify user of turn change
-      $('#message').text("It's now team X's turn")
+      //  notify user of computer turn
+      $('#message').text("It's now the computer's turn")
+      // switch computer turn
+      store.isComputerTurn = true
     }
   }
 }
