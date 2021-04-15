@@ -33,7 +33,12 @@ $(() => {
   // create event listener for click events (sign-out, new-game, view-games)
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('click', authEvents.onSignOut)
-  $('#new-game').on('click', gameEvents.onNewGame)
+  // modify to call event handler that will manage user player preference
+  $('#new-game').on('click', gameEvents.onPlayerPreference)
+  // add event listeners for play against `self` and `comptuer`
+  $('#self-game').on('click', gameEvents.onNewGame)
+  $('#computer-game').on('click', gameEvents.onNewGame)
+
   $('#view-games').on('click', gameEvents.onViewGames)
 
   // create event listener for game click events

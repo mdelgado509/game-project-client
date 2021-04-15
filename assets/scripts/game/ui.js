@@ -5,6 +5,17 @@
 
 const store = require('../store')
 
+// display player preference options
+const isPlayerSelf = function () {
+  // ask user their preference
+  // idea: have the self and computer as anchortags # that you can assign an event listener to for clicks.
+  $('#message').html('Would you like to play against <a href=# id="self-game">yourself</a> or the <a href=# id="computer-game">computer</a>?')
+}
+
+// const onPlayerPreferenceSuccess = function (event) {
+//
+// }
+
 // update the DOM when the API sends new game data
 const onNewGameSuccess = function (response) {
   // clear game board if it exists
@@ -86,7 +97,7 @@ const addToken = function (index) {
   } else {
     // store player info in game cell array
     store.game.cells[index] = {
-      token: index,
+      index: index,
       value: 'O'
     }
 
@@ -182,6 +193,7 @@ const onError = function () {
 }
 
 module.exports = {
+  isPlayerSelf,
   onNewGameSuccess,
   onViewGamesSuccess,
   onUpdateSuccess,

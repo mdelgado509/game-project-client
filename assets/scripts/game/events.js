@@ -11,6 +11,19 @@ const ui = require('./ui')
 // import object that handles user and game information
 const store = require('../store')
 
+// event handler function called when user starts new game
+// will handle the user player preference
+const onPlayerPreference = function (event) {
+  // prevent default refresh page
+  event.preventDefault()
+
+  // call function to update UI
+  ui.isPlayerSelf()
+    // // define promise chain
+    // .then(ui.onPlayerPreferenceSuccess)
+    // .catch(ui.onError)
+}
+
 // event handler function called when new game button is clicked
 const onNewGame = function (event) {
   // prevent default refresh page
@@ -65,6 +78,7 @@ const onBoardClick = function (event) {
 }
 
 module.exports = {
+  onPlayerPreference,
   onNewGame,
   onBoardClick,
   onViewGames
