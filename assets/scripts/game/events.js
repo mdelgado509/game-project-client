@@ -29,15 +29,22 @@ const onPlayerChoice = function (event) {
   // prevent default refresh page
   event.preventDefault()
 
-  // log event HTML id
-  console.log('hello')
+  // extract choice
+  const playerChoice = event.target.innerHTML
+
+  // set opponent to user choice and store in store.js file object
+  if (playerChoice === 'yourself') {
+    store.isPlayerSelf = true
+  } else {
+    store.isPlayerSelf = false
+  }
+
+  // start new game
+  onNewGame()
 }
 
-// event handler function called when new game button is clicked
-const onNewGame = function (event) {
-  // prevent default refresh page
-  event.preventDefault()
-
+// event handler function called when new game button is clicked and player is selected
+const onNewGame = function () {
   // import api call to create a new game
   api.newGame()
     .then(ui.onNewGameSuccess)

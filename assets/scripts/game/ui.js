@@ -9,7 +9,7 @@ const store = require('../store')
 const isPlayerSelf = function () {
   // ask user their preference
   // idea: have the self and computer as anchortags # that you can assign an event listener to for clicks.
-  $('#message').html('Would you like to play against <a id="self-game" href=# >yourself</a> or the <a id="computer-game" href=#>computer</a>?')
+  $('#message').html('Would you like to play against <a class="self-game" href=# >yourself</a> or the <a class="computer-game" href=#>computer</a>?')
 }
 
 // const onPlayerPreferenceSuccess = function (event) {
