@@ -17,11 +17,20 @@ const onPlayerPreference = function (event) {
   // prevent default refresh page
   event.preventDefault()
 
+  // store player preference in a variable
+  store.isPlayerSelf = null
+
   // call function to update UI
   ui.isPlayerSelf()
-    // // define promise chain
-    // .then(ui.onPlayerPreferenceSuccess)
-    // .catch(ui.onError)
+}
+
+// event handler for player choice
+const onPlayerChoice = function (event) {
+  // prevent default refresh page
+  event.preventDefault()
+
+  // log event HTML id
+  console.log('hello')
 }
 
 // event handler function called when new game button is clicked
@@ -79,6 +88,7 @@ const onBoardClick = function (event) {
 
 module.exports = {
   onPlayerPreference,
+  onPlayerChoice,
   onNewGame,
   onBoardClick,
   onViewGames

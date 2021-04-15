@@ -36,8 +36,8 @@ $(() => {
   // modify to call event handler that will manage user player preference
   $('#new-game').on('click', gameEvents.onPlayerPreference)
   // add event listeners for play against `self` and `comptuer`
-  $('#self-game').on('click', gameEvents.onNewGame)
-  $('#computer-game').on('click', gameEvents.onNewGame)
+  $('#message, #self-game').on('click', () => console.log('test'))
+  $('#computer-game').on('click', gameEvents.onPlayerChoice)
 
   $('#view-games').on('click', gameEvents.onViewGames)
 
