@@ -149,8 +149,129 @@ const addToken = function (index) {
       $('#message').text("It's now the computer's turn")
       // switch computer turn
       store.isComputerTurn = true
+
+      // call computerAddToken function
+      computerAddToken()
     }
   }
+}
+
+// function for computer adding token
+const computerAddToken = function () {
+  // need variables player, index, over
+  let index
+
+  // check and defend board
+  index = computerDefense(store.game.cells)
+
+  if (!index) {
+    // find availableSpaces
+    const availableSpaces = []
+    for (let i = 0; i < store.game.cells.length; i++) {
+      if (store.game.cells[i] === '') {
+        availableSpaces.push(i)
+      }
+    }
+
+    // randomly choose an available index
+    index = availableSpaces[Math.floor(Math.random() * availableSpaces.length)]
+  }
+
+  console.log(index)
+}
+
+const computerDefense = function (arr) {
+  let index = null
+
+  if (arr[0].value === 'X') {
+    if (arr[0].value === arr[1].value && !arr[2]) {
+      index = 2
+    } else if (arr[0].value === arr[2].value && !arr[1]) {
+      index = 1
+    } else if (arr[0].value === arr[3].value && !arr[6]) {
+      index = 6
+    } else if (arr[0].value === arr[6].value && !arr[3]) {
+      index = 3
+    } else if (arr[0].value === arr[4].value && !arr[8]) {
+      index = 8
+    } else if (arr[0].value === arr[8].value && !arr[4]) {
+      index = 4
+    }
+  }
+
+  if (arr[1].value === 'X') {
+    if (arr[1].value === arr[2] && !arr[0]) {
+      index = 0
+    } else if (arr[1].value === arr[4].value && !arr[7]) {
+      index = 7
+    } else if (arr[1].value === arr[7].value && !arr[4]) {
+      index = 4
+    }
+  }
+
+  if (arr[2].value === 'X') {
+    if (arr[2].value === arr[5] && !arr[8]) {
+      index = 8
+    } else if (arr[2].value === arr[8].value && !arr[5]) {
+      index = 5
+    } else if (arr[2].value === arr[4] && !arr[6]) {
+      index = 6
+    } else if (arr[2].value === arr[6].value && !arr[4]) {
+      index = 4
+    }
+  }
+
+  if (arr[3].value === 'X') {
+    if (arr[3].value === arr[4] && !arr[5]) {
+      index = 5
+    } else if (arr[3].value === arr[5].value && !arr[4]) {
+      index = 4
+    } else if (arr[3].value === arr[6] && !arr[0]) {
+      index = 0
+    }
+  }
+
+  if (arr[4].value === 'X') {
+    if (arr[4].value === arr[5] && !arr[3]) {
+      index = 3
+    } else if (arr[4].value === arr[7].value && !arr[1]) {
+      index = 1
+    } else if (arr[4].value === arr[8] && !arr[0]) {
+      index = 0
+    } else if (arr[4].value === arr[6] && !arr[2]) {
+      index = 2
+    }
+  }
+
+  if (arr[5].value === 'X') {
+    if (arr[5].value === arr[8] && !arr[2]) {
+      index = 2
+    }
+  }
+
+  if (arr[6].value === 'X') {
+    if (arr[6].value === arr[7] && !arr[8]) {
+      index = 8
+    } else if (arr[6].value === arr[8] && !arr[7]) {
+      index = 7
+    }
+  }
+
+  if (arr[6].value === 'X') {
+    if (arr[6].value === arr[7] && !arr[8]) {
+      index = 8
+    } else if (arr[6].value === arr[8] && !arr[7]) {
+      index = 7
+    }
+  }
+
+  if (arr[7].value === 'X') {
+    if (arr[6].value === arr[8] && !arr[6]) {
+      index = 6
+    }
+  }
+
+  return index
 }
 
 // check for winner
