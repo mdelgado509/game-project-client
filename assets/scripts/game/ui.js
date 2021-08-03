@@ -12,10 +12,6 @@ const isPlayerSelf = function () {
   $('#message').html('Would you like to play against <a class="self-game" href=# >yourself</a> or the <a class="computer-game" href=#>computer</a>?')
 }
 
-// const onPlayerPreferenceSuccess = function (event) {
-//
-// }
-
 // update the DOM when the API sends new game data
 const onNewGameSuccess = function (response) {
   // clear game board if it exists
@@ -124,6 +120,9 @@ const addToken = function (index) {
         // and notify user of turn change
         $('#message').text("It's now team X's turn")
       }
+      if (store.isComputerTurn && over) {
+        store.winner = 'O'
+      }
     }
   } else { // if the user is playing against the computer
     // store player value and space index in temporary game cell array
@@ -177,7 +176,12 @@ const computerAddToken = function () {
     index = availableSpaces[Math.floor(Math.random() * availableSpaces.length)]
   }
 
-  console.log(index)
+  // switch conditions of O play add to chosen index of game cell
+  store.isPlayerSelf = true
+  store.isTeamX = false
+  addToken(index)
+  store.isPlayerSelf = false
+  store.isComputerTurn = false
 }
 
 const computerDefense = function (arr) {
@@ -246,6 +250,8 @@ const computerDefense = function (arr) {
   if (arr[5].value === 'X') {
     if (arr[5].value === arr[8] && !arr[2]) {
       index = 2
+    } else if (arr[5].value === arr[2] && !arr[8]) {
+      index = 8
     }
   }
 
