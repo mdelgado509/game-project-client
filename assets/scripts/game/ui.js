@@ -120,8 +120,11 @@ const addToken = function (index) {
         // and notify user of turn change
         $('#message').text("It's now team X's turn")
       }
+
+      // because winner is grabbing the text from the event (which is last seen
+      // on the client end ('X')) here it is manually switched to 'O'
       if (store.isComputerTurn && over) {
-        store.winner = 'O'
+        store.winner = 'O' // remove when checkWinner is refactored
       }
     }
   } else { // if the user is playing against the computer
@@ -204,7 +207,7 @@ const computerDefense = function (arr) {
   }
 
   if (arr[1].value === 'X') {
-    if (arr[1].value === arr[2] && !arr[0]) {
+    if (arr[1].value === arr[2].value && !arr[0]) {
       index = 0
     } else if (arr[1].value === arr[4].value && !arr[7]) {
       index = 7
@@ -214,11 +217,11 @@ const computerDefense = function (arr) {
   }
 
   if (arr[2].value === 'X') {
-    if (arr[2].value === arr[5] && !arr[8]) {
+    if (arr[2].value === arr[5].value && !arr[8]) {
       index = 8
     } else if (arr[2].value === arr[8].value && !arr[5]) {
       index = 5
-    } else if (arr[2].value === arr[4] && !arr[6]) {
+    } else if (arr[2].value === arr[4].value && !arr[6]) {
       index = 6
     } else if (arr[2].value === arr[6].value && !arr[4]) {
       index = 4
@@ -226,53 +229,53 @@ const computerDefense = function (arr) {
   }
 
   if (arr[3].value === 'X') {
-    if (arr[3].value === arr[4] && !arr[5]) {
+    if (arr[3].value === arr[4].value && !arr[5]) {
       index = 5
     } else if (arr[3].value === arr[5].value && !arr[4]) {
       index = 4
-    } else if (arr[3].value === arr[6] && !arr[0]) {
+    } else if (arr[3].value === arr[6].value && !arr[0]) {
       index = 0
     }
   }
 
   if (arr[4].value === 'X') {
-    if (arr[4].value === arr[5] && !arr[3]) {
+    if (arr[4].value === arr[5].value && !arr[3]) {
       index = 3
     } else if (arr[4].value === arr[7].value && !arr[1]) {
       index = 1
-    } else if (arr[4].value === arr[8] && !arr[0]) {
+    } else if (arr[4].value === arr[8].value && !arr[0]) {
       index = 0
-    } else if (arr[4].value === arr[6] && !arr[2]) {
+    } else if (arr[4].value === arr[6].value && !arr[2]) {
       index = 2
     }
   }
 
   if (arr[5].value === 'X') {
-    if (arr[5].value === arr[8] && !arr[2]) {
+    if (arr[5].value === arr[8].value && !arr[2]) {
       index = 2
-    } else if (arr[5].value === arr[2] && !arr[8]) {
+    } else if (arr[5].value === arr[2].value && !arr[8]) {
       index = 8
     }
   }
 
   if (arr[6].value === 'X') {
-    if (arr[6].value === arr[7] && !arr[8]) {
+    if (arr[6].value === arr[7].value && !arr[8]) {
       index = 8
-    } else if (arr[6].value === arr[8] && !arr[7]) {
+    } else if (arr[6].value === arr[8].value && !arr[7]) {
       index = 7
     }
   }
 
   if (arr[6].value === 'X') {
-    if (arr[6].value === arr[7] && !arr[8]) {
+    if (arr[6].value === arr[7].value && !arr[8]) {
       index = 8
-    } else if (arr[6].value === arr[8] && !arr[7]) {
+    } else if (arr[6].value === arr[8].value && !arr[7]) {
       index = 7
     }
   }
 
   if (arr[7].value === 'X') {
-    if (arr[6].value === arr[8] && !arr[6]) {
+    if (arr[7].value === arr[8].value && !arr[6]) {
       index = 6
     }
   }
